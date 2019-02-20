@@ -24,7 +24,7 @@ sudo curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
 # Add User to Docker
-sudo usermod -aG docker `$USER`
+sudo usermod -aG docker $USER
 
 # Install Docker Compose
 sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
@@ -37,4 +37,4 @@ sudo docker run -d -p 8086:8086 influxdb
 #gnome-terminal
 
 # Install Grafana Docker Container
-docker run --name=grafana -d -p 3000:3000 grafana/grafana
+sudo docker run --name=grafana -d -p 3000:3000 grafana/grafana
