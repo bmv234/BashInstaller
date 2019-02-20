@@ -23,7 +23,7 @@ echo " "
 sudo curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
-# Add User to Docker
+# Add User to Docker (Test to see if works, require a logout and log back in)
 sudo usermod -aG docker $USERNAME
 
 # Install Docker Compose
