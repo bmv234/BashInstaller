@@ -15,3 +15,16 @@ sudo bash
 sudo curl https://raw.githubusercontent.com/bmv234/BashInstaller/master/install.sh | bash
 <password>
 ```
+
+
+Troubleshooting:
+
+If you get the following error:
+
+sudo: curl: command not found
+
+Then run the following to install curl:
+
+'''
+sudo apt-get install curl -y
+'''
