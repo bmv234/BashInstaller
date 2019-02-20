@@ -13,10 +13,15 @@ sudo apt-get update && sudo apt-get upgrade
 
 #Wait Message
 echo
-"*********************************************************************/n
-Some programs need to be downloaded from the interet./n
-This will take some time depending on your internet connection speed./n
-*********************************************************************"
+"
+
+
+*********************************************************************
+Some programs need to be downloaded from the interet.
+This will take some time depending on your internet connection speed.
+*********************************************************************
+
+"
 
 # Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
