@@ -28,7 +28,12 @@ curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compos
 chmod +x /usr/local/bin/docker-compose
 
 # Install InfluxDB Docker Container
-docker run -d -p influxdb
+docker run --name=influxdb -d -p 8086:8086 -p 2003:2003 influxdb \
+    -e INFLUXDB_GRAPHITE_ENABLED=true \
+    influxdb
+
+#Open new terminal
+gnome-terminal
 
 # Install Grafana Docker Container
-docker run -d -p 3000:3000 grafana/grafana
+docker run --name=grafana -d -p 3000:3000 grafana/grafana
