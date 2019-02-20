@@ -24,7 +24,7 @@ sudo curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
 # Add User to Docker (Test to see if works, require a logout and log back in)
-sudo usermod -aG docker $USERNAME
+sudo usermod -aG docker `$USER`
 
 # Install Docker Compose
 sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
