@@ -12,13 +12,7 @@ if [ "$totalk" -lt "1000000" ]; then echo "At least 1GB Memory is required!"; ex
 sudo apt-get update && sudo apt-get upgrade
 
 #Wait Message
-printf
-"\n
-*********************************************************************\n
-Some programs need to be downloaded from the interet.\n
-This will take some time depending on your internet connection speed.\n
-*********************************************************************\n
-"
+echo -e "\n*********************************************************************\nSome programs need to be downloaded from the interet.\nThis will take some time depending on your internet connection speed.\n*********************************************************************\n"
 
 # Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
