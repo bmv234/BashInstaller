@@ -13,14 +13,11 @@ sudo apt-get update && sudo apt-get upgrade
 
 #Wait Message
 echo
-"
-
-
-*********************************************************************
-Some programs need to be downloaded from the interet.
-This will take some time depending on your internet connection speed.
-*********************************************************************
-
+"\n
+*********************************************************************\n
+Some programs need to be downloaded from the interet.\n
+This will take some time depending on your internet connection speed.\n
+*********************************************************************\n
 "
 
 # Install Docker
