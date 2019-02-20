@@ -12,7 +12,7 @@ if [ "$totalk" -lt "1000000" ]; then echo "At least 1GB Memory is required!"; ex
 sudo apt-get update && sudo apt-get upgrade
 
 #Wait Message
-echo
+printf
 "\n
 *********************************************************************\n
 Some programs need to be downloaded from the interet.\n
