@@ -14,7 +14,7 @@ sudo apt-get update && sudo apt-get upgrade
 #Wait Message
 echo " "
 echo "*********************************************************************"
-echo "Some programs need to be downloaded from the interet."
+echo "Some programs need to be downloaded from the internet."
 echo "This will take some time depending on your internet connection speed."
 echo "*********************************************************************"
 echo " "
@@ -26,3 +26,9 @@ sh get-docker.sh
 # Install Docker Compose
 curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
+
+# Install InfluxDB Docker Container
+docker run -d -p influxdb
+
+# Install Grafana Docker Container
+docker run -d -p 3000:3000 grafana/grafana
