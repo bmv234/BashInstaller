@@ -38,3 +38,15 @@ sudo docker run -d -p 8086:8086 influxdb
 
 # Install Grafana Docker Container
 sudo docker run --name=grafana -d -p 3000:3000 grafana/grafana
+
+# Make Mosquitto Configuration File
+mkdir -p ./mosquitto/config/ && touch ./mosquitto/config/mosquitto.conf
+sudo chmod a+rwx ./mosquitto/config/mosquitto.conf
+
+echo "persistence true" > ./mosquitto/config/mosquitto.conf
+echo "persistence_location /mosquitto/data/" >> ./mosquitto/config/mosquitto.conf
+echo "log_dest file /mosquitto/log/mosquitto.log" >> ./mosquitto/config/mosquitto.conf
+
+
+# Install Mosquitto Docker Container
+docker run -it -p 1883:1883 -p 9001:9001 -v mosquitto.conf:$(pwd)/mosquitto/config/mosquitto.conf eclipse-mosquitto
