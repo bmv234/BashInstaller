@@ -4,8 +4,19 @@
 # Script only works if sudo caches the password for a few minutes
 sudo true
 
+# Check for 1GB Memory
+totalk=$(awk '/^MemTotal:/{print $2}' /proc/meminfo)
+if [ "$totalk" -lt "1000000" ]; then echo "At least 1GB Memory is required!"; exit 1; fi
+
 # Update the system
 sudo apt-get update && sudo apt-get upgrade
+
+#Wait Message
+echo
+"*********************************************************************/n
+Some programs need to be downloaded from the interet./n
+This will take some time depending on your internet connection speed./n
+*********************************************************************"
 
 # Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
