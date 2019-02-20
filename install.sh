@@ -24,11 +24,11 @@ sudo curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
 # Install Docker Compose
-sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
 sudo chmod +x /usr/local/bin/docker-compose
 
 # Install InfluxDB Docker Container
-sudo docker run --name=influxdb -d -p 8086:8086 -p 2003:2003 influxdb \
+sudo docker run -d -p 8086:8086 -p 2003:2003 influxdb \
     -e INFLUXDB_GRAPHITE_ENABLED=true \
     influxdb
 
