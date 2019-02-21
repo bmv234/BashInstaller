@@ -47,7 +47,7 @@ else
 fi
 
 # Install and Run InfluxDB Docker Container
-sudo docker run -d -p 8086:8086 influxdb/influxdb
+sudo docker run --name=influxdb -d -p 8086:8086 influxdb
 
 #Open new terminal
 #gnome-terminal
@@ -65,4 +65,4 @@ echo "log_dest file /mosquitto/log/mosquitto.log" >> ./mosquitto/config/mosquitt
 
 
 # Install and Run Mosquitto Docker Container
-docker run -it -p 1883:1883 -p 9001:9001 -v mosquitto.conf:$(pwd)/mosquitto/config/mosquitto.conf eclipse-mosquitto/eclipse-mosquitto
+docker run --name=mosquitto -it -p 1883:1883 -p 9001:9001 -v mosquitto.conf:$(pwd)/mosquitto/config/mosquitto.conf eclipse-mosquitto
