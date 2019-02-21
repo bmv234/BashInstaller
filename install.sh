@@ -20,28 +20,34 @@ echo "*********************************************************************"
 echo " "
 
 # Check to see if docker-ce package is already installed, if not install docker-ce
-for package; do
-    dpkg -s "docker-ce" >/dev/null 2>&1 && {
-        echo "docker-ce is installed."
-    } || {
-        sudo curl -fsSL https://get.docker.com -o get-docker.sh
-        sh get-docker.sh
-    }
-done
+if dpkg -s "docker-ce" >/dev/null 2>&1; then
+    echo " "
+    echo "*********************************************************************"
+    echo "docker-ce is installed."
+    echo "*********************************************************************"
+    echo " "
+else
+    sudo curl -fsSL https://get.docker.com -o get-docker.sh
+    sh get-docker.sh
+fi
 
 # Add User to Docker (Test to see if works, require a logout and log back in)
 sudo usermod -aG docker $USER
 
 # Check to see if docker-compose is already installed, if not install docker-compose
 if [ -f /usr/local/bin/docker-compose ]; then
+    echo " "
+    echo "*********************************************************************"
     echo "docker-compose is installed."
+    echo "*********************************************************************"
+    echo " "
 else
     sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 fi
 
 # Install and Run InfluxDB Docker Container
-sudo docker run -d -p 8086:8086 influxdb
+sudo docker run -d -p 8086:8086 influxdb/influxdb
 
 #Open new terminal
 #gnome-terminal
@@ -59,4 +65,4 @@ echo "log_dest file /mosquitto/log/mosquitto.log" >> ./mosquitto/config/mosquitt
 
 
 # Install and Run Mosquitto Docker Container
-docker run -it -p 1883:1883 -p 9001:9001 -v mosquitto.conf:$(pwd)/mosquitto/config/mosquitto.conf eclipse-mosquitto
+docker run -it -p 1883:1883 -p 9001:9001 -v mosquitto.conf:$(pwd)/mosquitto/config/mosquitto.conf eclipse-mosquitto/eclipse-mosquitto
