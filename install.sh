@@ -19,24 +19,34 @@ echo "This will take some time depending on your internet connection speed."
 echo "*********************************************************************"
 echo " "
 
-# Install Docker
-sudo curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
+# Check to see if docker-ce package is already installed, if not install docker-ce
+for package; do
+    dpkg -s "docker-ce" >/dev/null 2>&1 && {
+        echo "docker-ce is installed."
+    } || {
+        sudo curl -fsSL https://get.docker.com -o get-docker.sh
+        sh get-docker.sh
+    }
+done
 
 # Add User to Docker (Test to see if works, require a logout and log back in)
 sudo usermod -aG docker `$USER`
 
-# Install Docker Compose
-sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+# Check to see if docker-compose is already installed, if not install docker-compose
+if [ -f /usr/local/bin/docker-compose ]; then
+    echo "docker-compose ins installed."
+else
+    sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+fi
 
-# Install InfluxDB Docker Container
+# Install and Run InfluxDB Docker Container
 sudo docker run -d -p 8086:8086 influxdb
 
 #Open new terminal
 #gnome-terminal
 
-# Install Grafana Docker Container
+# Install and Run Grafana Docker Container
 sudo docker run --name=grafana -d -p 3000:3000 grafana/grafana
 
 # Make Mosquitto Configuration File
@@ -48,5 +58,5 @@ echo "persistence_location /mosquitto/data/" >> ./mosquitto/config/mosquitto.con
 echo "log_dest file /mosquitto/log/mosquitto.log" >> ./mosquitto/config/mosquitto.conf
 
 
-# Install Mosquitto Docker Container
+# Install and Run Mosquitto Docker Container
 docker run -it -p 1883:1883 -p 9001:9001 -v mosquitto.conf:$(pwd)/mosquitto/config/mosquitto.conf eclipse-mosquitto
