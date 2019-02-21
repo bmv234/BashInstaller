@@ -30,11 +30,11 @@ for package; do
 done
 
 # Add User to Docker (Test to see if works, require a logout and log back in)
-sudo usermod -aG docker `$USER`
+sudo usermod -aG docker $USER
 
 # Check to see if docker-compose is already installed, if not install docker-compose
 if [ -f /usr/local/bin/docker-compose ]; then
-    echo "docker-compose ins installed."
+    echo "docker-compose is installed."
 else
     sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
