@@ -16,7 +16,6 @@ sudo curl https://raw.githubusercontent.com/bmv234/BashInstaller/master/install.
 <password>
 ```
 
-
 Troubleshooting:
 
 If you get the following error:
