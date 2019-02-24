@@ -24,6 +24,6 @@ sudo: curl: command not found
 
 Then run the following to install curl:
 
-'''
+```bash
 sudo apt-get install curl -y
-'''
+```
