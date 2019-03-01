@@ -47,13 +47,13 @@ else
 fi
 
 # Install and Run InfluxDB Docker Container
-sudo docker run --name=influxdb -d -p 8086:8086 influxdb
+sudo docker run --name=influxdb -d -p 8086:8086 unless-stopped influxdb
 
 #Open new terminal
 #gnome-terminal
 
 # Install and Run Grafana Docker Container
-sudo docker run --name=grafana -d -p 3000:3000 grafana/grafana
+sudo docker run --name=grafana -d -p 3000:3000 unless-stopped grafana/grafana
 
 # Make Mosquitto Configuration File
 mkdir -p ./mosquitto/config/ && touch ./mosquitto/config/mosquitto.conf
@@ -65,4 +65,4 @@ echo "log_dest file /mosquitto/log/mosquitto.log" >> ./mosquitto/config/mosquitt
 
 
 # Install and Run Mosquitto Docker Container
-docker run --name=mosquitto -it -p 1883:1883 -p 9001:9001 -v mosquitto.conf:$(pwd)/mosquitto/config/mosquitto.conf eclipse-mosquitto
+docker run --name=mosquitto -it -p 1883:1883 -p 9001:9001 -v mosquitto.conf:$(pwd)/mosquitto/config/mosquitto.conf unless-stopped eclipse-mosquitto
