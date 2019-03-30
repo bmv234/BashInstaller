@@ -2,7 +2,7 @@
 
 This install script install the prerequisite software packages required.
 
-Software Packages:
+### Software Packages:
 
 Docker
 Docker Compose
@@ -16,7 +16,7 @@ sudo curl https://raw.githubusercontent.com/bmv234/BashInstaller/master/install.
 <password>
 ```
 
-Troubleshooting:
+### Troubleshooting:
 
 If you get the following error:
 
